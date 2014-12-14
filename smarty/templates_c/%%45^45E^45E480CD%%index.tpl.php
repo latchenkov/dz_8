@@ -1,13 +1,14 @@
-<?php /* Smarty version 2.6.28, created on 2014-12-13 16:27:46
+<?php /* Smarty version 2.6.28, created on 2014-12-14 12:31:19
          compiled from index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'index.tpl', 8, false),array('function', 'html_options', 'index.tpl', 50, false),array('modifier', 'default', 'index.tpl', 8, false),array('modifier', 'replace', 'index.tpl', 31, false),array('modifier', 'string_format', 'index.tpl', 108, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'index.tpl', 2, false),array('modifier', 'replace', 'index.tpl', 31, false),array('modifier', 'string_format', 'index.tpl', 108, false),array('function', 'html_radios', 'index.tpl', 8, false),array('function', 'html_options', 'index.tpl', 50, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => 'header.tpl', 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-<form  method="post"  >
+<form  method="post" action="<?php echo ((is_array($_tmp="?edit=".($this->_tpl_vars['edit_id']))) ? $this->_run_mod_handler('default', true, $_tmp, '') : smarty_modifier_default($_tmp, '')); ?>
+" >
     <table>
 	<tr>
             <td>

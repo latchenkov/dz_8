@@ -16,8 +16,6 @@ $smarty->compile_dir = $smarty_dir.'templates_c';
 $smarty->cache_dir = $smarty_dir.'cache';
 $smarty->config_dir = $smarty_dir.'configs';
 
-
-session_start();
 require ('functions.php'); // Подключаем файл с функциями
 
 define('ADS_DB', 'ads_db.txt');
@@ -37,10 +35,9 @@ if (isset($_POST['main_form_submit'])) { // если была нажата кн�
             $ads_db['db'][$id]['date'] = date('d.m.Y H:i:s'); // время подачи объявления
         break;
 	case 'Сохранить изменения' :
-            $id = $_SESSION['edit_id']; // номер редактируемого объявления
-            unset($_SESSION['edit_id'], $ads_db['db'][$id]['allow_mails']);
-            session_destroy();
-	break;
+            $id = $_GET['edit']; // номер редактируемого объявления
+            unset($ads_db['db'][$id]['allow_mails']);
+        break;
     }
     foreach ($_POST as $key => $value) {
         $ads_db['db'][$id][$key] = trim(htmlspecialchars($value));
@@ -49,7 +46,6 @@ file_put_serialize_contents(ADS_DB, $ads_db); // запись массива в 
 header("Location: dz_8.php");
 exit;
 }
-
 
 // Удаление объявления
 if (isset($_GET['delete'])) {
@@ -62,7 +58,7 @@ exit;
 // Вывод объявления
 if (isset($_GET['show'])){
     $edit_id=$_GET['show'];
-    $_SESSION['edit_id']=$edit_id;
+    $smarty->assign('edit_id', $edit_id);
     $smarty->assign('editAd', $ads_db['db'][$edit_id]);
 }
 

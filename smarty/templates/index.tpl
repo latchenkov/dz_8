@@ -1,5 +1,5 @@
 {include file='header.tpl'}
-<form  method="post"  >
+<form  method="post" action="{"?edit=$edit_id"|default:''}" >
     <table>
 	<tr>
             <td>
